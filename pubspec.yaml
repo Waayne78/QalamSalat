@@ -1,0 +1,45 @@
+name: test_app
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+     
+
+
+  cupertino_icons: ^1.0.2
+  localization: ^2.1.0
+  flutter_localizations:
+    sdk: flutter
+  slide_digital_clock: ^1.0.2
+  flutter_riverpod: ^2.1.1
+  intl: ^0.17.0
+  geolocator: ^9.0.2
+  http: ^0.13.5
+  google_fonts: ^3.0.1
+  auto_route: ^5.0.2
+  build_runner: ^2.3.2
+  auto_route_generator: ^5.0.3
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  table_calendar: ^3.0.3
+  google_nav_bar: ^5.0.6
+  loading_animation_widget: ^1.2.0+3
+
+flutter_native_splash:
+  color : "#327CFF"
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  
+  uses-material-design: true
+
