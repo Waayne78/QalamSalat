@@ -1,6 +1,6 @@
 # test_app
 
-A new Flutter project.
+A free mobile app which allows you to pray on time.
 
 ## Getting Started
 
