@@ -1,4 +1,4 @@
-# test_app
+# QalamSalat
 
 A free mobile app which allows you to pray on time.
 
