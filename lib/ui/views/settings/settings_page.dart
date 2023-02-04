@@ -4,18 +4,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test_app/ui/app/app_router.gr.dart';
 import 'package:test_app/ui/app/app_theme.dart';
-import 'package:test_app/ui/views/settings/notifications_view.dart';
+
+
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends ConsumerWidget {
   const SettingsView({
     super.key,
   });
 
-  Widget buildSettingsTile(IconData icone, String text, Function() onPress) {
+  Widget buildSettingsTile(IconData icone, String text, Function() onTap) {
     return Container(
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 252, 236, 255),
+            color: AppTheme.primaryColor,
             borderRadius: BorderRadius.circular(24)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 20),
@@ -33,7 +35,7 @@ class SettingsView extends ConsumerWidget {
                         fontWeight: FontWeight.bold, fontSize: 18)),
               ),
               IconButton(
-                  onPressed: onPress,
+                  onPressed: onTap,
                   icon: Icon(Icons.arrow_forward_ios_sharp, size: 20)),
             ],
           ),
@@ -73,14 +75,18 @@ class SettingsView extends ConsumerWidget {
                   color: AppTheme.darkColor,
                 )),
             SizedBox(height: 30),
-            buildSettingsTile(Icons.language_outlined, "langue", () {
-              AutoRouter.of(context).push(NotificationsRoute());
+            
+            buildSettingsTile(Icons.favorite_outline, "évaluer l'application",
+                () async {
+              const repoUrl = "https://github.com/Wayne78190/QalamSalat#readme";
+              await launchUrl(Uri.parse(repoUrl));
             }),
-            buildSettingsTile(
-                Icons.favorite_outline, "évaluer l'application", () {}),
-            buildSettingsTile(
-                Icons.copyright_rounded, "A propos de Qalam", () {}),
-            SizedBox(height: 160)
+            buildSettingsTile(Icons.copyright_rounded, "à propos de Qalam",
+                () async {
+              const repoUrl = "https://github.com/Wayne78190/QalamSalat#readme";
+              await launchUrl(Uri.parse(repoUrl));
+            }),
+            SizedBox(height: 350)
           ],
         ),
       ),

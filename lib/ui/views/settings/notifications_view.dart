@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,37 +42,52 @@ class NotificationsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 247, 215, 252),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 247, 215, 252),
-        centerTitle: true,
-        title: Text('Qalam',
-            style: GoogleFonts.cormorantGaramond(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.darkColor,
-            )),
-        elevation: 0,
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("notifications".toUpperCase(),
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 35,
-                    color: AppTheme.darkColor)),
-            SizedBox(height: 25),
-            buildNotifTile(Icons.notifications, "SUBH"),
-            buildNotifTile(Icons.notifications, "DHUHR"),
-            buildNotifTile(Icons.notifications, "ASR"),
-            buildNotifTile(Icons.notifications, "MAGHRIB"),
-            buildNotifTile(Icons.notifications, "ISHA"),
-          ],
+        backgroundColor: AppTheme.lightColor,
+        appBar: AppBar(
+          backgroundColor: AppTheme.lightColor,
+          centerTitle: true,
+          title: Text('Qalam',
+              style: GoogleFonts.cormorantGaramond(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.darkColor,
+              )),
+          elevation: 0,
         ),
-      ),
-    );
+        body: Container(
+          child: Opacity(opacity:0.6 ,
+          
+            child: IgnorePointer(
+                child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("notifications".toUpperCase(),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35,
+                        color: AppTheme.darkColor)),
+                        SizedBox(height: 15),
+                Text("( Bientôt disponible )",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: AppTheme.darkColor)),
+                SizedBox(height: 25),
+                buildNotifTile(Icons.notifications, "SUBH"),
+                buildNotifTile(Icons.notifications, "DHUHR"),
+                buildNotifTile(Icons.notifications, "ASR"),
+                buildNotifTile(Icons.notifications, "MAGHRIB"),
+                buildNotifTile(Icons.notifications, "ISHA"),
+                 SizedBox(height:15),
+              ],
+             
+            ),
+            
+          ),
+        )))));
+        
   }
 }

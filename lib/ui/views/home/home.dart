@@ -16,7 +16,7 @@ class HomeView extends ConsumerWidget {
   Widget buildPrayerTile(String name, String horaire) {
     return Container(
         decoration: BoxDecoration(
-          color: AppTheme.primaryColor,
+          color: Color.fromARGB(255, 252, 233, 255),
           borderRadius: BorderRadius.circular(23),
         ),
         margin: EdgeInsets.symmetric(horizontal: 15),
@@ -93,7 +93,7 @@ class HomeView extends ConsumerWidget {
                 fontWeight: FontWeight.bold),
           ),
           Text(
-              ' DANS ${(state.countdown / 60).floor()} HEURES ET ${state.countdown % 60} MINUTES',
+              '  ${(state.countdown / 60).floor()} HEURES ET ${state.countdown % 60} MINUTES',
               style: GoogleFonts.ptSans(fontSize: 15)),
           const SizedBox(height: 8),
           Padding(
@@ -155,7 +155,7 @@ class HomeView extends ConsumerWidget {
                       children: [
                         buildPrayerTile("Subh", state.horaires[0]),
                         buildPrayerTile("Shuruq", state.horaires[1]),
-                        buildPrayerTile("Dhur", state.horaires[2]),
+                        buildPrayerTile("Dhuhr", state.horaires[2]),
                         buildPrayerTile("Asr", state.horaires[3]),
                         buildPrayerTile("Maghrib", state.horaires[4]),
                         buildPrayerTile("Isha", state.horaires[5]),
