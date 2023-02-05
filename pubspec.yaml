@@ -27,6 +27,7 @@ dependencies:
   url_launcher: ^6.1.8
   flutter_qiblah: ^2.1.0
   flutter_gen: ^5.1.0+1
+  flutter_native_splash: ^2.2.17
   
 
 dev_dependencies:
@@ -37,8 +38,8 @@ dev_dependencies:
   loading_animation_widget: ^1.2.0+3
 
 flutter_native_splash:
-  color : "#327CFF"
-  flutter_lints: ^2.0.0
+  color: "#F3D6F0"
+  image: assets/images/QalamLogo.png
 
 
 flutter:

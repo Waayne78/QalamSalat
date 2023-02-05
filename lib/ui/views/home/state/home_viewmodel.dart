@@ -69,7 +69,7 @@ class HomeNotifier extends StateNotifier<HomeState> {
         }
 
         final nextPrayer =
-            ["Subh", "Shuruq", "Dhor", "Asr", "Maghreb", "Icha"][indice];
+            ["Subh", "Shuruq", "Dhuhr", "Asr", "Maghrib", "Isha"][indice];
 
         final nextPrayerInfo = state.horairesToday[indice].split(":");
         final nextPrayerTime = DateTime(

@@ -46,7 +46,7 @@ class NotificationsView extends ConsumerWidget {
         appBar: AppBar(
           backgroundColor: AppTheme.lightColor,
           centerTitle: true,
-          title: Text('Qalam',
+          title: Text('Qalam®',
               style: GoogleFonts.cormorantGaramond(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -55,39 +55,36 @@ class NotificationsView extends ConsumerWidget {
           elevation: 0,
         ),
         body: Container(
-          child: Opacity(opacity:0.6 ,
-          
-            child: IgnorePointer(
-                child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("notifications".toUpperCase(),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        color: AppTheme.darkColor)),
+            child: Opacity(
+                opacity: 0.6,
+                child: IgnorePointer(
+                    child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("notifications".toUpperCase(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                                color: AppTheme.darkColor)),
                         SizedBox(height: 15),
-                Text("( Bientôt disponible )",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: AppTheme.darkColor)),
-                SizedBox(height: 25),
-                buildNotifTile(Icons.notifications, "SUBH"),
-                buildNotifTile(Icons.notifications, "DHUHR"),
-                buildNotifTile(Icons.notifications, "ASR"),
-                buildNotifTile(Icons.notifications, "MAGHRIB"),
-                buildNotifTile(Icons.notifications, "ISHA"),
-                 SizedBox(height:15),
-              ],
-             
-            ),
-            
-          ),
-        )))));
-        
+                        Text("( Bientôt disponible )",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: AppTheme.darkColor)),
+                        SizedBox(height: 25),
+                        buildNotifTile(Icons.notifications, "SUBH"),
+                        buildNotifTile(Icons.notifications, "DHUHR"),
+                        buildNotifTile(Icons.notifications, "ASR"),
+                        buildNotifTile(Icons.notifications, "MAGHRIB"),
+                        buildNotifTile(Icons.notifications, "ISHA"),
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                  ),
+                )))));
   }
 }

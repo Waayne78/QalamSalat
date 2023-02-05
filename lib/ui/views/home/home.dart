@@ -52,7 +52,7 @@ class HomeView extends ConsumerWidget {
         appBar: AppBar(
           backgroundColor: AppTheme.lightColor,
           elevation: 0,
-          title: Text('Qalam',
+          title: Text('Qalam®',
               style: GoogleFonts.cormorantGaramond(
                   color: Color.fromARGB(255, 147, 0, 173),
                   fontSize: 25,

@@ -49,7 +49,7 @@ class SettingsView extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: AppTheme.lightColor,
         centerTitle: true,
-        title: Text('Qalam',
+        title: Text('Qalam®',
             style: GoogleFonts.cormorantGaramond(
               fontSize: 25,
               fontWeight: FontWeight.bold,
