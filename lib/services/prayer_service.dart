@@ -8,28 +8,35 @@ final prayerServiceProvider = Provider((ref) => PrayerService());
 
 class PrayerService {
   Map<String, List<String>> prayerCache = {};
+  Position? userLocation;
 
   String _prettyPrayerTime(String time) {
     return time.split(" ")[0];
   }
 
   Future<List<String>> getPrayers(DateTime day) async {
-    var permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+    if (userLocation == null) {
+      var permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
-        return [];
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          return [];
+        }
+      }
+
+      userLocation = await Geolocator.getLastKnownPosition();
+
+      if (userLocation == null) {
+        userLocation = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
       }
     }
 
-    final position = await Geolocator.getCurrentPosition();
-    
     final key = day.toString().split(" ")[0];
     if (prayerCache.containsKey(key)) {
       return prayerCache[key]!;
     }
 
-    final url = "https://api.aladhan.com/v1/calendar?latitude=${position.latitude}&longitude=${position.longitude}&method=2&month=${day.month}&year=${day.year}";
+    final url = "https://api.aladhan.com/v1/calendar?latitude=${userLocation!.latitude}&longitude=${userLocation!.longitude}&method=2&month=${day.month}&year=${day.year}";
     final data = await http.get(Uri.parse(url));
     final json = jsonDecode(data.body);
 

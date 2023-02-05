@@ -34,7 +34,7 @@ class _QiblahViewState extends State<QiblahView>
         body: StreamBuilder(
           stream: FlutterQiblah.qiblahStream,
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
+            if (snapshot.connectionState == ConnectionState.waiting || !snapshot.hasData) {
               return Container(
                   alignment: Alignment.center,
                   child: const CircularProgressIndicator(
