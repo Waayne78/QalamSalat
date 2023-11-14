@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_app/ui/app/app_router.gr.dart';
+import 'package:Qalam/ui/app/app_router.gr.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:test_app/ui/app/app_theme.dart';
+import 'package:geolocator/geolocator.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Demander l'autorisation de localisation
+  await _checkLocationPermission();
+
   runApp(ProviderScope(child: MyApp()));
+}
+
+Future<void> _checkLocationPermission() async {
+  final locationPermissionStatus = await Geolocator.checkPermission();
+  if (locationPermissionStatus == LocationPermission.denied ||
+      locationPermissionStatus == LocationPermission.deniedForever) {
+    await Geolocator.requestPermission();
+  }
 }
 
 class MyApp extends StatelessWidget {

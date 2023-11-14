@@ -13,12 +13,24 @@ class HomeState {
       required this.countdown});
 
   factory HomeState.initial() {
+    final prayerTimes = [];
+    final now = DateTime.now();
+    final nextPrayerTime = prayerTimes.firstWhere(
+      (time) => time.isAfter(now),
+      orElse: () => null,
+    );
+    int countdown = -1;
+    if (nextPrayerTime != null) {
+      final timeDifference = nextPrayerTime.difference(now);
+      countdown = timeDifference.inMinutes;
+    }
     return HomeState(
-        dateChoisie: DateTime.now(),
-        horaires: [],
-        horairesToday: [],
-        nextPrayer: "???",
-        countdown: -1);
+      dateChoisie: now,
+      horaires: [],
+      horairesToday: [],
+      nextPrayer: "...",
+      countdown: countdown,
+    );
   }
 
   HomeState copyWith(

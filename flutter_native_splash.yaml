@@ -1,0 +1,13 @@
+flutter_native_splash:
+  color: '#F3D6F0'
+  image: assets/images/QalamScreen.png
+  color_dark: "#F3D6F0"
+  image_dark: assets/images/QalamScreen.png
+  android_12:
+    image: assets/images/QalamScreen.png
+    icon_background_color: "#F3D6F0"
+    image_dark: assets/images/QalamScreen.png
+    icon_background_color_dark: "#F3D6F0"
+  android: true
+  ios: true
+  web: false

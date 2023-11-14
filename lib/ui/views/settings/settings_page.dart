@@ -2,10 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:test_app/ui/app/app_router.gr.dart';
-import 'package:test_app/ui/app/app_theme.dart';
-
-
+import 'package:Qalam/ui/app/app_router.gr.dart';
+import 'package:Qalam/ui/app/app_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends ConsumerWidget {
@@ -49,7 +47,7 @@ class SettingsView extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: AppTheme.lightColor,
         centerTitle: true,
-        title: Text('Qalam®',
+        title: Text('Qalam',
             style: GoogleFonts.cormorantGaramond(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -75,7 +73,9 @@ class SettingsView extends ConsumerWidget {
                   color: AppTheme.darkColor,
                 )),
             SizedBox(height: 30),
-            
+           // buildSettingsTile(Icons.location_on_outlined, "Localisation", () {
+            //  AutoRouter.of(context).push(LocationRoute());
+          //  }),
             buildSettingsTile(Icons.favorite_outline, "évaluer l'application",
                 () async {
               const repoUrl = "https://github.com/Wayne78190/QalamSalat#readme";
@@ -84,6 +84,11 @@ class SettingsView extends ConsumerWidget {
             buildSettingsTile(Icons.copyright_rounded, "à propos de Qalam",
                 () async {
               const repoUrl = "https://github.com/Wayne78190/QalamSalat#readme";
+              await launchUrl(Uri.parse(repoUrl));
+            }),
+            buildSettingsTile(Icons.attach_money_sharp, "donner à la mosquée",
+                () async {
+              const repoUrl = "https://avecc78.org/faire-un-don/";
               await launchUrl(Uri.parse(repoUrl));
             }),
             SizedBox(height: 350)

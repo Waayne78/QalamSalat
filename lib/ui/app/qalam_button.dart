@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
-
-import 'package:test_app/ui/app/app_theme.dart';
+import 'package:Qalam/ui/app/app_theme.dart';
 
 class QalamButton extends StatefulWidget {
-  
-
-  const QalamButton({super.key, required this.onPressed, required this.child, required this.color});
+  const QalamButton(
+      {super.key,
+      required this.onPressed,
+      required this.child,
+      required this.color});
 
   final Widget child;
   final Function() onPressed;
@@ -24,7 +24,7 @@ class _QalamButtonState extends State<QalamButton> {
         splashColor: AppTheme.primaryColor,
         child: Ink(
             decoration: BoxDecoration(
-              color: widget.color, 
+              color: widget.color,
               borderRadius: BorderRadius.all(Radius.circular(30)),
             ),
             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 11),

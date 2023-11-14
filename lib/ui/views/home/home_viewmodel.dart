@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_app/services/prayer_service.dart';
-import 'home_state.dart';
+import 'package:Qalam/services/prayer_service.dart';
+import 'state/home_state.dart';
 
 final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>((ref) {
   return HomeNotifier(ref);
@@ -44,46 +44,51 @@ class HomeNotifier extends StateNotifier<HomeState> {
         continue;
       }
 
-      var horaireIcha = state.horairesToday.last;
-      horaireIcha = horaireIcha.replaceAll(":", "");
-      if (int.parse(nombreMaintenant) > int.parse(horaireIcha)) {
+      int indice = 0;
+      for (var horaire in state.horairesToday) {
+        horaire = horaire.replaceAll(":", "");
+        if (int.parse(nombreMaintenant) > int.parse(horaire)) {
+          indice += 1;
+        } else {
+          break;
+        }
+      }
+
+      if (indice >= state.horairesToday.length) {
+        // Toutes les prières pour aujourd'hui sont déjà passées,
+        // passons à la première prière de demain
         final demain = DateTime.now().add(Duration(days: 1));
         final keyDemain = demain.toString().split(" ")[0];
         final horairesDemain =
             _ref.read(prayerServiceProvider).prayerCache[keyDemain]!;
-        final nextPrayerInfo = horairesDemain[0].split(":");
-        final nextPrayerTime = DateTime(demain.year, demain.month, demain.day,
-            int.parse(nextPrayerInfo[0]), int.parse(nextPrayerInfo[1]));
+        final nextPrayer = horairesDemain[0].split(":")[0];
+        final nextPrayerTime = DateTime(
+          demain.year,
+          demain.month,
+          demain.day,
+          int.parse(horairesDemain[0].split(":")[0]),
+          int.parse(horairesDemain[0].split(":")[1]),
+        );
         final timeLeft = nextPrayerTime.difference(DateTime.now()).inMinutes;
-        state = state.copyWith(nextPrayer: "Subh", countdown: timeLeft);
+        state = state.copyWith(nextPrayer: nextPrayer, countdown: timeLeft);
       } else {
-        int indice = 0;
-        for (var horaire in state.horairesToday) {
-          
-          horaire = horaire.replaceAll(":", "");
-          if (int.parse(nombreMaintenant) > int.parse(horaire)) {
-            indice += 1;
-          } else {
-            break;
-          }
-        }
-
         final nextPrayer =
             ["Subh", "Shuruq", "Dhuhr", "Asr", "Maghrib", "Isha"][indice];
-
         final nextPrayerInfo = state.horairesToday[indice].split(":");
         final nextPrayerTime = DateTime(
-            DateTime.now().year,
-            DateTime.now().month,
-            DateTime.now().day,
-            int.parse(nextPrayerInfo[0]),
-            int.parse(nextPrayerInfo[1]));
-        final timeLeft = DateTime.now().difference(nextPrayerTime).inMinutes;
-
+          DateTime.now().year,
+          DateTime.now().month,
+          DateTime.now().day,
+          int.parse(nextPrayerInfo[0]),
+          int.parse(nextPrayerInfo[1]),
+        );
+        final timeLeft = nextPrayerTime.difference(DateTime.now()).inMinutes;
         state = state.copyWith(nextPrayer: nextPrayer, countdown: timeLeft);
       }
 
-      await Future.delayed(Duration(seconds: 10));
+      // Notify listeners to update the UI
+
+      await Future.delayed(Duration(seconds: 2));
     }
   }
 }
