@@ -84,7 +84,7 @@ class PrayerService {
             case 0:
               return 'Subh';
             case 1:
-              return 'Sunrise';
+              return 'Shuruq';
             case 2:
               return 'Dhuhr';
             case 3:
@@ -98,7 +98,7 @@ class PrayerService {
       }
     }
 
-    return 'Subh'; // Par défaut, retourner Fajr si aucune prière n'est trouvée (par exemple, si les horaires sont incorrects)
+    return 'Subh'; // (Par défaut)
   }
 
   String _prettyPrayerTime(String time) {

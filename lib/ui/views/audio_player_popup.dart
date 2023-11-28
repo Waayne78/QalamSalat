@@ -14,25 +14,22 @@ class AudioPlayerPage extends StatefulWidget {
 }
 
 class _AudioPlayerPageState extends State<AudioPlayerPage> {
-  int currentSurahIndex = 0; // Position actuelle dans la liste
+  int currentSurahIndex = 0;
   bool isPlaying = false;
   bool isFavorite = false;
 
-  // Fonction pour inverser l'état du bouton favoris
   void toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
     });
   }
 
-  // Fonction pour inverser l'état du bouton lecture/pause
   void togglePlayPause() {
     setState(() {
       isPlaying = !isPlaying;
     });
   }
 
-  // Icône de lecture ou pause en fonction de l'état isPlaying
   Icon playPauseIcon() {
     return isPlaying
         ? Icon(
@@ -61,44 +58,38 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
             )),
         backgroundColor: AppTheme.lightColor,
         elevation: 0,
-          leading: IconButton(
+        leading: IconButton(
           onPressed: () {
             AutoRouter.of(context).pop();
           },
-          icon: Icon(Icons.keyboard_arrow_down_rounded, color: Colors.black, size: 45),
+          icon: Icon(Icons.keyboard_arrow_down_rounded,
+              color: Colors.black, size: 45),
         ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Zone pour afficher les détails de la sourate
-            SizedBox(height: 16.0),
-            // Icône de la sourate (vous pouvez personnaliser l'icône)
-            SizedBox(height: 16.0),
-            // Barre de progression (vous pouvez personnaliser son aspect)
-            SizedBox(height: 200.0),
+            SizedBox(height: 200),
             Column(
               children: [
                 Text(
-                  '2:30 / 14:07', // Remplacez cette valeur par la durée actuelle
+                  '2:30 / 14:07', // Remplacer cette valeur par la durée actuelle
                   style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 LinearProgressIndicator(
                   value:
-                  
-                      0.2, // Modifiez cette valeur pour la progression actuelle
+                      0.2, 
                   valueColor: AlwaysStoppedAnimation<Color>(AppTheme.darkColor),
                   backgroundColor: AppTheme.primaryColor,
                 ),
               ],
             ),
             SizedBox(height: 16.0),
-            // Boutons de favoris, lecture/pause, arrêt, saut précédent et saut suivant
+         
             Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, 
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
                   child: IconButton(
@@ -108,7 +99,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                       color: isFavorite ? AppTheme.darkColor : Colors.black,
                     ),
                     onPressed: () {
-                      // Action pour ajouter ou supprimer de la liste de favoris
+              
                       toggleFavorite();
                     },
                   ),
@@ -127,7 +118,6 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                   child: IconButton(
                     icon: playPauseIcon(),
                     onPressed: () {
-                      // Action pour démarrer ou arrêter la lecture
                       togglePlayPause();
                     },
                   ),
