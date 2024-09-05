@@ -102,7 +102,7 @@ class _QiblahViewState extends State<QiblahView>
                       ),
                     ),
                   ),
-                  SizedBox(height: 35),
+                  const SizedBox(height: 35),
                   ElevatedButton(
                     onPressed: () {
                       _animationController!.reset();
@@ -113,8 +113,8 @@ class _QiblahViewState extends State<QiblahView>
                             20), 
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
                           vertical: 12, horizontal: 16),
                       child: Text('Recalibrer la direction'),
                     ),

@@ -13,12 +13,13 @@ class MainView extends StatelessWidget {
       lazyLoad: false,
       resizeToAvoidBottomInset: false,
       animationDuration: const Duration(seconds: 0),
+      // ignore: prefer_const_literals_to_create_immutables
       routes: [
-        HomeRoute(),
-        NotificationsRoute(),
-        QiblahRoute(),
-        HijriCalendarPage(),
-        QuranRoute()
+        const HomeRoute(),
+        const NotificationsRoute(),
+        const QiblahRoute(),
+        const HijriCalendarPage(),
+        const QuranRoute()
       ],
       bottomNavigationBuilder: (context, tabsRouter) => Container(
           color: AppTheme.lightColor,
@@ -28,7 +29,7 @@ class MainView extends StatelessWidget {
             activeColor: AppTheme.primaryColor,
             tabBackgroundColor: AppTheme.darkColor,
             gap: 4,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
             tabs: [
               GButton(
                   icon: Icons.timer,

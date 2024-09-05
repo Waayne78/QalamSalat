@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -9,28 +11,30 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_route/auto_route.dart';
 import '../../app/qalam_button.dart';
-import 'package:Qalam/services/prayer_service.dart';
+import 'package:Qalam/services/prayer_provider.dart';
 
 class LocationDisclosureDialog extends StatelessWidget {
+  const LocationDisclosureDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Autorisation de la Localisation requise'),
+      title: const Text('Autorisation de la Localisation requise'),
       shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(20.0), 
+        borderRadius: BorderRadius.circular(20.0),
       ),
       backgroundColor: AppTheme.primaryColor,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
-          Text(
+          const Text(
             'Nous avons besoin de votre permission pour accéder à votre localisation.',
             style: TextStyle(fontSize: 16),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             "Cette autorisation est nécessaire pour vous fournir les horaires de prière. Soyez assuré(e) que nous ne collectons aucune donnée personnelle.",
             style: TextStyle(fontSize: 14),
           ),
@@ -40,7 +44,7 @@ class LocationDisclosureDialog extends StatelessWidget {
         TextButton(
           onPressed: () =>
               Navigator.pop(context, true), // Accepter la permission
-          child: Text('J\'accepte'),
+          child: const Text('J\'accepte'),
         ),
       ],
     );
@@ -56,7 +60,7 @@ class HomeView extends ConsumerWidget {
           color: AppTheme.primaryColor,
           borderRadius: BorderRadius.circular(23),
         ),
-        margin: EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
           child: Row(
@@ -103,7 +107,7 @@ class HomeView extends ConsumerWidget {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return LocationDisclosureDialog();
+                  return const LocationDisclosureDialog();
                 },
               );
             },
@@ -115,7 +119,7 @@ class HomeView extends ConsumerWidget {
           ),
           IconButton(
             onPressed: () {
-              AutoRouter.of(context).push(SettingsRoute());
+              AutoRouter.of(context).push(const SettingsRoute());
             },
             icon: Icon(
               Icons.settings,
@@ -156,7 +160,7 @@ class HomeView extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 QalamButton(
-                  child: Icon(Icons.arrow_back_ios_outlined,
+                  child: const Icon(Icons.arrow_back_ios_outlined,
                       color: Colors.black, size: 17),
                   onPressed: () {
                     ref.read(homeProvider.notifier).lastDay();
@@ -165,7 +169,7 @@ class HomeView extends ConsumerWidget {
                 ),
                 QalamButton(
                   child: Text(prettyDate,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 15)),
@@ -175,7 +179,7 @@ class HomeView extends ConsumerWidget {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(2020),
                       lastDate: DateTime(2024),
-                      locale: Locale("fr", "FR"),
+                      locale: const Locale("fr", "FR"),
                     );
                     if (date != null) {
                       ref.read(homeProvider.notifier).selectDate(date);
@@ -189,7 +193,7 @@ class HomeView extends ConsumerWidget {
                     ref.read(homeProvider.notifier).nextDay();
                   },
                   color: AppTheme.lightColor,
-                  child: Icon(Icons.arrow_forward_ios_outlined,
+                  child: const Icon(Icons.arrow_forward_ios_outlined,
                       color: Colors.black, size: 17),
                 ),
               ],

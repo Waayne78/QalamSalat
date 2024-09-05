@@ -31,7 +31,10 @@ class AppLifecycleObserver with WidgetsBindingObserver {
 }
 
 class HijriCalendarPage extends StatefulWidget {
+  const HijriCalendarPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HijriCalendarPageState createState() => _HijriCalendarPageState();
 }
 
@@ -128,13 +131,13 @@ class _HijriCalendarPageState extends State<HijriCalendarPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 formattedDate,
                 style: GoogleFonts.ptSans(
                     fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               HijriMonthPicker(
                 firstDate: firstDate,
                 lastDate: lastDate,
@@ -154,7 +157,8 @@ class _HijriCalendarPageState extends State<HijriCalendarPage> {
                           style: GoogleFonts.ptSans(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 20),
                         dense: true,
                         value: prayerStatus[prayer],
                         onChanged: (value) {

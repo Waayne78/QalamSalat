@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:Qalam/services/prayer_service.dart';
+import 'package:Qalam/services/prayer_provider.dart';
 import 'state/home_state.dart';
 
 final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>((ref) {
@@ -40,7 +40,7 @@ class HomeNotifier extends StateNotifier<HomeState> {
           "${DateTime.now().hour}${DateTime.now().minute.toString().padLeft(2, '0')}";
 
       if (state.horairesToday.isEmpty) {
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
         continue;
       }
 

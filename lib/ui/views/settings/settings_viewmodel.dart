@@ -11,5 +11,5 @@ class SettingsNotifier extends StateNotifier<SettingsState> {
   // ignore: unused_field
   final StateNotifierProviderRef<SettingsNotifier, SettingsState> _ref;
 
-  SettingsNotifier(this._ref) : super(SettingsState.initial()) {}
+  SettingsNotifier(this._ref) : super(SettingsState.initial());
 }

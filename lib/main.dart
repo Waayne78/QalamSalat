@@ -36,14 +36,15 @@ class MyApp extends StatelessWidget {
       ),
       routeInformationParser: _appRouter.defaultRouteParser(),
       title: 'Qalam',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      // ignore: prefer_const_literals_to_create_immutables
       supportedLocales: [
-        Locale('en', ''),
-        Locale('fr', 'FR'),
+      const Locale('en', ''),
+        const Locale('fr', 'FR'),
       ],
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields, library_private_types_in_public_api, empty_catches, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,7 +58,6 @@ class _SearchViewState extends State<SearchView> {
           });
         }
       } catch (e) {
-        print(e.toString());
       }
     }
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
+
 import 'package:Qalam/ui/views/settings/location_viewmodel.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class OnBoardingScreen extends StatefulWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+// class OnBoardingScreen extends StatefulWidget {
+//   const OnBoardingScreen({Key? key}) : super(key: key);
 
-  @override
-  __OnBoardingScreenState createState() => __OnBoardingScreenState();
-}
+//   @override
+//   __OnBoardingScreenState createState() => __OnBoardingScreenState();
+// }
 
-class __OnBoardingScreenState extends State<OnBoardingScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
+// class __OnBoardingScreenState extends State<OnBoardingScreen> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold();
+//   }
+// }

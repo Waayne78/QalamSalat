@@ -10,6 +10,32 @@ class QuranView extends StatefulWidget {
   State<QuranView> createState() => _QuranViewState();
 }
 
+class ReciterDialog extends StatelessWidget {
+  const ReciterDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Choisir un récitateur'),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      backgroundColor: AppTheme.primaryColor,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () =>
+              Navigator.pop(context, true), 
+              child: const Text('OK'),
+        ),
+      ],
+    );
+  }
+}
+
 class _QuranViewState extends State<QuranView> {
   void openAudioPlayerDialog(String surahName) {
     showDialog(
@@ -17,7 +43,7 @@ class _QuranViewState extends State<QuranView> {
       builder: (BuildContext context) {
         return AudioPlayerPage(
           surahName: surahName,
-          surahList: [],
+          surahList: const [],
         );
       },
     );
@@ -29,24 +55,48 @@ class _QuranViewState extends State<QuranView> {
       backgroundColor: AppTheme.lightColor,
       appBar: AppBar(
         backgroundColor: AppTheme.lightColor,
-        centerTitle: true,
-        title: Text(
-          'Qalam - Quran',
-          style: GoogleFonts.cormorantGaramond(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppTheme.darkColor,
-          ),
+        title: Row(
+          children: [
+            Text(
+              'Qalam - Quran',
+              style: GoogleFonts.cormorantGaramond(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.darkColor,
+              ),
+            ),
+          ],
         ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const ReciterDialog();
+                },
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  right: 25), 
+              child: Icon(
+                Icons.person,
+                color: AppTheme.darkColor,
+                size: 25,
+              ),
+            ),
+          ),
+        ],
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 30),
+                const SizedBox(height: 0),
                 buildSurahTile(context, "1 - Al Fatiha"),
                 buildSurahTile(context, "2 - Al Baqarah"),
                 buildSurahTile(context, "3 - Al-'Imran"),
@@ -161,7 +211,7 @@ class _QuranViewState extends State<QuranView> {
                 buildSurahTile(context, "112 - Al-Ikhlas"),
                 buildSurahTile(context, "113 - Al-Falaq"),
                 buildSurahTile(context, "114 - An-Nas"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             )),
       ),
@@ -174,7 +224,7 @@ class _QuranViewState extends State<QuranView> {
         openAudioPlayerDialog(text);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: AppTheme.primaryColor,
           borderRadius: BorderRadius.circular(22),
@@ -184,7 +234,7 @@ class _QuranViewState extends State<QuranView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 25),
+              const SizedBox(width: 25),
               Expanded(
                 child: Text(
                   text,

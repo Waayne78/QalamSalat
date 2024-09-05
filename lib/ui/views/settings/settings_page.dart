@@ -12,7 +12,7 @@ class SettingsView extends ConsumerWidget {
 
   Widget buildSettingsTile(IconData icone, String text, Function() onTap) {
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
             color: AppTheme.primaryColor,
             borderRadius: BorderRadius.circular(24)),
@@ -25,7 +25,7 @@ class SettingsView extends ConsumerWidget {
                 icone,
                 size: 20,
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Expanded(
                 child: Text(text.toUpperCase(),
                     style: GoogleFonts.ptSans(
@@ -33,7 +33,7 @@ class SettingsView extends ConsumerWidget {
               ),
               IconButton(
                   onPressed: onTap,
-                  icon: Icon(Icons.arrow_forward_ios_sharp, size: 20)),
+                  icon: const Icon(Icons.arrow_forward_ios_sharp, size: 20)),
             ],
           ),
         ));
@@ -57,7 +57,7 @@ class SettingsView extends ConsumerWidget {
           onPressed: () {
             AutoRouter.of(context).pop();
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
         ),
       ),
       body: Container(
@@ -71,7 +71,7 @@ class SettingsView extends ConsumerWidget {
                   fontSize: 35,
                   color: AppTheme.darkColor,
                 )),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             // buildSettingsTile(Icons.location_on_outlined, "Localisation", () {
             //  AutoRouter.of(context).push(LocationRoute());
             //  }),
@@ -90,10 +90,12 @@ class SettingsView extends ConsumerWidget {
               const repoUrl = "https://avecc78.org/faire-un-don/";
               await launchUrl(Uri.parse(repoUrl));
             }),
-            SizedBox(height: 350)
+            const SizedBox(height: 350)
           ],
         ),
       ),
     );
   }
 }
+
+
